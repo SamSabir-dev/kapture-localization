@@ -14,8 +14,9 @@ def compute_reprojection_error(pose: kapture.PoseTransform, num_inliers: int, in
     compute reprojection error from a pose, a list of inlier indexes, the full list of 2D points and 3D points
     and camera parameters
     """
-    obs_2D = np.empty((num_inliers, 2), dtype=np.float)
-    obs_3D = np.empty((1, num_inliers, 3), dtype=np.float)
+    # ``np.float`` was deprecated in numpy 1.20.
+    obs_2D = np.empty((num_inliers, 2), dtype=np.float64)
+    obs_3D = np.empty((1, num_inliers, 3), dtype=np.float64)
     for i, index in enumerate(inliers):
         obs_2D[i, :] = points2D[index]
         obs_3D[0, i, :] = points3D[index]

@@ -46,5 +46,6 @@ class MatchPairNnTorch(MatchPairGenerator):
             [ids1[mask].type(torch.float), nearest_neighbor_idx_1vs2[mask].type(torch.float), scores[mask]]).t()
         # retrieve data back from GPU
         matches = matches_torch.data.cpu().numpy()
-        matches = matches.astype(np.float)
+        # ``np.float`` is deprecated since numpy 1.20
+        matches = matches.astype(np.float64)
         return matches
