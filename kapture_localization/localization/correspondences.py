@@ -123,7 +123,7 @@ def get_correspondences(kapture_data: kapture.Kapture, keypoints_type: str,
                 else:
                     # kpid_query not in assigned_3d_points_ids[p3did]
                     same_3d_multiple_2d_count += 1
-                    assigned_3d_points_ids[p3did].add(p3did)
+                    assigned_3d_points_ids[p3did].add(kpid_query)
                     same_3d_multiple_2d_max = max(same_3d_multiple_2d_max, len(assigned_3d_points_ids[p3did]))
 
             if kpts_query is not None:
